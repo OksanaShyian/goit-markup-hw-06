@@ -716,7 +716,6 @@ img {
 	display: block;
 	transition: border-color 300ms linear;
 }
-
 .span-icon {
 	fill: transparent;
 	transition: fill 300ms linear;
