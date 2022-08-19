@@ -564,6 +564,10 @@ img {
 	margin-left: 10px;
 	vertical-align: middle;
 }
+.footer-button-submit:hover,
+.footer-button-submit:focus {
+	opacity: 0.9;
+}
 /*--------------------MODAL------------------------*/
 
 .backdrop {
