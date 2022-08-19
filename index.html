@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Projekt-1</title>
+		<title>Document</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -52,7 +52,7 @@
 			<!--Головна та замовлення послуг-->
 			<section class="hero">
 				<h1 class="hero-title">Ефективні рішення для вашого бізнесу</h1>
-				<button type="button" class="button" data-modal-open>Замовити послугу</button>
+				<button type="button" class="button header-button" data-modal-open>Замовити послугу</button>
 			</section>
 			<!--Політика компаніі-->
 			<section class="section">
@@ -351,12 +351,15 @@
 				</div>
 				<div class="footer-subscription">
 					<p class="footer-subscription-title">підпишіться на розсилку</p>
-					<form class="footer-form">
-					<div class="footer-field">
-						<input type="text" class="footer-input" name="email" placeholder="E-mail" />
-						<button type="submit" class="footer-bottom-submit">Підписатися</button>
-						<svg class="form-icon" width="18px" height="18px"><use></use></svg>
-					</div>
+					<form class="footer-form js-speaker-form">
+						<label for="email"></label>
+						<input type="text" class="footer-input" name="email" id="email" placeholder="E-mail" required />
+						<button type="submit" class="footer-button-submit button">
+							Підписатися<svg class="footer-icon" width="24px" height="24px">
+								<use href="./img/icons.svg#icon-send"></use>
+							</svg>
+						</button>
+					</form>
 				</div>
 			</div>
 		</footer>
@@ -368,32 +371,49 @@
 					</svg>
 				</button>
 				<p class="modal-title">Залиште свої дані, ми вам передзвонимо</p>
-				<form class="modal-form">
+				<form class="modal-form js-speaker-form">
 					<div class="form-field">
 						<label for="name"><span class="form-label">Ім'я</span></label>
-						<input type="text" class="form-input" name="name" id="name" />
-						<svg class="form-icon" width="18px" height="18px"><use></use></svg>
+						<div class="input-wrap">
+							<input type="text" class="form-input" name="name" id="name" />
+							<svg class="form-icon" width="18px" height="18px"><use href="./img/icons.svg#icon-person"></use></svg>
+						</div>
 					</div>
 					<div class="form-field">
 						<label for="tel"><span class="form-label">Телефон</span></label>
-						<input type="tel" class="form-input" name="tel" id="tel" />
+						<div class="input-wrap">
+							<input type="tel" class="form-input" name="tel" id="tel" />
+							<svg class="form-icon" width="18px" height="18px"><use href="./img/icons.svg#icon-phone"></use></svg>
+						</div>
 					</div>
 					<div class="form-field">
 						<label for="email"><span class="form-label">Пошта</span></label>
-						<input type="email" class="form-input" name="email" id="email" />
+						<div class="input-wrap">
+							<input type="email" class="form-input" name="email" id="email" />
+							<svg class="form-icon" width="18px" height="18px"><use href="./img/icons.svg#icon-email"></use></svg>
+						</div>
 					</div>
 					<div class="form-field">
 						<label for="comment"><span class="form-label">Коментар</span></label>
 						<textarea name="comment" id="comment" class="modal-text" placeholder="Введіть текст"></textarea>
 					</div>
 					<div class="checkbox-field">
-						<input type="checkbox" class="input-terms" name="terms" id="terms" />
-						<label for="label-terms"
-							><span class="span-terms">Погоджуюся з розсилкою та приймаю</span>
-							<a href="" class="terms">Умови договору</a></label
+						<input
+							type="checkbox"
+							class="input-checkbox visually-hidden"
+							value="true"
+							name="policy"
+							id="policy"
+							required
+						/>
+						<label for="policy" class="policy-label"
+							><span class="span-checkbox"
+								><svg class="span-icon" width="16" height="15">
+									<use href="./img/icons.svg#icon-Vector"></use></svg></span
+							>Погоджуюся з розсилкою та приймаю <a href="" class="checkbox-link">Умови договору</a></label
 						>
 					</div>
-					<button type="submit" class="bottom-submit">Відправити</button>
+					<button type="submit" class="button-submit button">Відправити</button>
 				</form>
 			</div>
 		</div>
@@ -402,6 +422,16 @@
 		<script>
 			const { height: pageHeaderHeight } = document.querySelector(".page-header").getBoundingClientRect();
 			document.body.style.paddingTop = `${pageHeaderHeight}px`;
+		</script>
+		<!-- JS для заповнення модального вікна -->
+		<script>
+			(() => {
+				document.querySelector(".js-speaker-form").addEventListener("submit", e => {
+					e.preventDefault();
+
+					new FormData(e.currentTarget).forEach((value, name) => console.log(`${name}: ${value}`));
+				});
+			})();
 		</script>
 	</body>
 </html>
